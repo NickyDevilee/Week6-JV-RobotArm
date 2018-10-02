@@ -16,7 +16,19 @@ opdracht: Lab - robotarm -->
             robotArm.loadLevel("exercise 9");
             
             // Jou instructies volgen hier
-            
+            for (var i = 1; i <= 4; i++) {  // er zijn in totaal vier kolommen waar de grijper langs moet gaan.
+                for (var a = 0; a < i; a++) { // a is nu 0 en i is 1, dit zorgt ervoor dat de grijper 1 blokje pakt, daarna 2, daarna 3 enz.
+                    robotArm.grab();
+                        for (var j = 0; j < 5; j++) { // de grijper moet 5 plekken naar rechts gaan
+                            robotArm.moveRight();
+                        }
+                        robotArm.drop();
+                        for (var k = 0; k < 5; k++) { // de grijper moet weer 5 plekken terug.
+                            robotArm.moveLeft();
+                        }
+
+                }robotArm.moveRight(); // na elk rondje gaat de grijper 1 plekje naar rechts en begint zo aan een nieuwe kolom. dit word bijgehouden bij variabele i.
+            }
             
 
             // De door jou opgegeven instructies uitvoeren
