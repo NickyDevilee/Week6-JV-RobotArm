@@ -16,7 +16,23 @@ opdracht: Lab - robotarm -->
             robotArm.loadLevel("exercise 12");
             
             // Jou instructies volgen hier
-            
+              for (var z = 0; z<9;) {
+                robotArm.grab();
+                if (robotArm.scan() == 'red') {
+                    for(var i=9; i>z; i--) {
+                        robotArm.moveRight();
+                    }
+                    robotArm.drop();
+                    for(var j = 8; j>z; j--) {
+                        robotArm.moveLeft();
+                    }
+                }
+                else {
+                    robotArm.drop();
+                    robotArm.moveRight();
+                }
+                z++;
+            }
             
 
             // De door jou opgegeven instructies uitvoeren

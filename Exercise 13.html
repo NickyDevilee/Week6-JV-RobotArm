@@ -1,3 +1,8 @@
+<!-- Nicky Devilee
+Bol4 applicatieontwikkelaar
+Week 6 - JavaScript
+opdracht: Lab - robotarm -->
+
 <html>
     <body>
         <canvas id="canvas" width="800" height="600"></canvas>
@@ -8,33 +13,36 @@
             var robotArm = new RobotArm(canvas);
             
             // Het level inladen
-            robotArm.loadLevel("exercise 10");
+            robotArm.randomLevel(1, 8);
             
             // Jou instructies volgen hier
-            for(a=0; a<4; a++){
-                robotArm.moveRight();
-            }
-            
-            var p = 1;
-            
-            for(a=0; a<5; a++){
-                robotArm.grab();
-                for(k=0; k<p; k++){
+            for (var i = 6; i > 0;i--) {
+            robotArm.grab();
+            if (robotArm.scan() == null) {
+                i-=6;
+            }else {
+                for (var j = 7; j > i;j--) {
                     robotArm.moveRight();
-                }
-                robotArm.drop();
-                p++;
-                for(j=0; j<p; j++){
+                } robotArm.drop();
+                for (var k = 6; k > 0; k--) {
                     robotArm.moveLeft();
                 }
-                p++;
-                robotArm.grab();
-            
             }
+        }
             
-        
+
             // De door jou opgegeven instructies uitvoeren
             robotArm.run();
         </script>
     </body>
 </html>
+
+<!-- 
+for (var i = 0; i < 8; i++) {
+                
+            }
+robotArm.grab();
+robotArm.moveRight();
+robotArm.drop();
+robotArm.moveLeft();
+ -->
